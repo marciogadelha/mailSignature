@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+	<script src="mailSignature.js"></script>
+	<link rel="stylesheet" href="./mailSignature.css">
+	<title>Gerador de Assinatura de E-mail da Sudene</title>
+</head>
+<body>
+	<h4>Gerador de Assinatura de E-mail da Sudene</h4>
+	<br>
+	<div id="formBox">
+		<form>
+			<div class="row">
+				<div class="form-group col-md-6 col-sm-6">
+					<label for="fullname">Nome</label>
+					<input class="form-control" type="text" name="fullname" oninput="setValue(name, this.value)">
+				</div>
+				<div class="form-group col-md-6 col-sm-6">
+					<label for="mail">E-mail</label>
+					<input class="form-control" type="text" name="mail" oninput="setValue(name, this.value)">
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-6 col-sm-6">
+					<label for="effecivePosition">Cargo Efetivo</label>
+					<input class="form-control" type="text" name="effecivePosition" oninput="setValue(name, this.value)">
+				</div>
+				<div class="form-group col-md-6 col-sm-6">
+					<label for="commissionedPosition">Função Comissionada</label>
+					<input class="form-control" type="text" name="commissionedPosition" oninput="setValue(name, this.value)">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="department">Área/Setor</label>
+				<input class="form-control" type="text" name="department" oninput="setValue(name, this.value)">
+			</div>
+			<div class="row">
+				<div class="form-group col-md-4 col-sm-4">
+					<label for="phone">Telefone Principal</label>
+					<input class="form-control" type="text" name="phone" oninput="setValue(name, this.value)">
+				</div>
+				<div class="form-group col-md-4 col-sm-4">
+					<label for="altPhone">Telefone Alternativo</label>
+					<input class="form-control" type="text" name="altPhone" oninput="setValue(name, this.value)">
+				</div>
+				<div class="form-group col-md-4 col-sm-4">
+					<label for="compPhone">Telefone Complementar</label>
+					<input class="form-control" type="text" name="compPhone" oninput="setValue(name, this.value)">
+				</div>
+			</div>
+		</form>
+	</div>
+	<br>
+	<div id="signatureBox">
+		<div id="imageBox">
+			<div id="leftBlock">
+				<div id="sudene">
+					<div>SUPERINTENDÊNCIA</div>
+					<div>DO DESENVOLVIMENTO</div>
+					<div>DO NORDESTE</div>
+				</div>
+				<div id="address">
+					<div>Av. Engenheiro Domingos Ferreira, 1967,</div>
+					<div>Boa Viagem - Recife/PE</div>
+				</div>
+			</div>
+			<div id="rightBlock">
+				<div id="containerInsideRightBlock">
+					<div id="nameBlock" style="display: none;">
+						<div id="fullname" class="blockItem" style="display: none;"></div>
+						<div id="separateName" class="separator blockItem" style="display: none;">|</div>
+						<div id="mail" class="blockItem" style="display: none;"></div>
+					</div>
+					<div id="positionBlock" style="display: none;">
+						<div id="effecivePosition" class="blockItem" style="display: none;"></div>
+						<div id="separatePosition" class="separator blockItem" style="display: none;">|</div>
+						<div id="commissionedPosition" class="blockItem" style="display: none;"></div>
+					</div>
+					<div id="department" style="display: none;"></div>
+					<div id="phoneBlock" style="display: none;">
+						<div id="phone" class="blockItem" style="display: none;"></div>
+						<div id="separateFirstPhone" class="separator blockItem" style="display: none;">|</div>
+						<div id="altPhone" class="blockItem" style="display: none;"></div>
+						<div id="separateLastPhone" class="separator blockItem" style="display: none;">|</div>
+						<div id="compPhone" class="blockItem" style="display: none;"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div id="buttonBox">
+		<button type="button" class="btn btn-success" onclick="saveImage()">Exportar Assinatura como Imagem</button>
+		<button type="button" class="btn btn-success" onclick="saveHTML()" data-toggle="modal" data-target="#exampleModalCenter">Exportar Assinatura como HTML</button>
+  
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Código-Fonte da Assinatura Gerada em HTML</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="message-text" class="col-form-label">Código-fonte pronto para ser importado como assinatura no webmail:</label>
+						<textarea class="form-control" id="message-text" rows="2"></textarea>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<div class="copytooltip">
+						<button type="button" class="btn btn-secondary" onclick="saveHTML();copiedTooltip()" onmouseout="resetTooltip()">
+							<span class="tooltiptext" id="tooltip">Clique para copiar!</span>
+							Copiar código-fonte em HTML
+						</button>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+	<br>
+</body>
+</html>
