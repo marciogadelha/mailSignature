@@ -95,7 +95,7 @@ function setStyles(originalElem, elem) {
 	elem.style.borderRightWidth = style.borderRightWidth;
 	elem.style.borderRightStyle = style.borderRightStyle;
 	elem.style.borderRightColor = style.borderRightColor;
-	elem.style.width = style.width;
+	elem.style.borderCollapse = style.borderCollapse;
 	elem.style.textAlign = style.textAlign;
 	elem.style.alignItems = style.alignItems;
 	elem.style.justifyContent = style.justifyContent;
