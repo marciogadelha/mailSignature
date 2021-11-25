@@ -4,7 +4,7 @@
 	font-family: sans-serif;
 	white-space: nowrap;
 }
-body{
+body {
 	background-color:#E5EFDD;
 	color: #5b5b5b;
 }
@@ -22,20 +22,14 @@ h4 {
 	border-style: solid;
 	border-radius: 5px;
 }
-#signatureBox{
-	display: flex;
-	flex-wrap: nowrap;
+#signatureBox {
 	min-width: 300px;
 	width: -moz-fit-content;
 	width: fit-content;
 	background-color: #ffffff;
 	color: black;
-	/* border-width: 1px;
-	border-color: #5b5b5b;
-	border-style: solid; */
 }
-#imageBox{
-	display: flex;
+#imagebox {
 	margin: 0;
 }
 table {
@@ -44,30 +38,28 @@ table {
 	border: 0;
 	border-collapse: collapse;
 }
-#leftBlock{
+#leftBlock {
 	margin: 5px;
 	padding: 0 10px 0 5px;
-	display: block;
 	text-align: center;
 	border-right: 1px solid #009035;
 }
-#sudene{
+#sudene {
 	color: #009035;
 	font-weight: 900;
 	font-size: 15px;
 	margin-bottom: 1px;
 	line-height: 1.25;
 }
-#address{
+#address {
 	color: black;
 	font-weight: 300;
 	font-size: 10px;
 	line-height: 1.25;
 }
-#rightBlock{
+#rightBlock {
 	margin: 5px;
 	padding: 0 5px 0 0;
-	display: flex;
 	align-items: center;
 	width: auto;
 	font-size: 14px;
@@ -84,9 +76,6 @@ table {
 }
 .separator{
 	margin: 0 4px 0 4px;
-}
-.blockItem{
-	display: inline;
 }
 #buttonBox {
 	text-align: center;

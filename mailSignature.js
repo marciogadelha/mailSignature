@@ -1,25 +1,25 @@
 
-function separateTwoItems (block, first, separator, last) {
-	let firstValue = $("#"+ first).text();
-	let lastValue = $("#"+ last).text();
+function separateTwoItems(block, first, separator, last) {
+	let firstValue = $("#" + first).text();
+	let lastValue = $("#" + last).text();
 	if (firstValue !== "" || lastValue !== "") {
-		$("#"+ block).show();
+		$("#" + block).show();
 		if (firstValue !== "" && lastValue !== "") {
 			$("#" + separator).show();
 		} else {
 			$("#" + separator).hide();
 		}
 	} else {
-		$("#"+ block).hide();
+		$("#" + block).hide();
 	}
 }
 
-function separateThreeItems (block, first, firstSeparator, second, lastSeparator, last) {
-	let firstValue = $("#"+ first).text();
-	let secondValue = $("#"+ second).text();
-	let lastValue = $("#"+ last).text();
+function separateThreeItems(block, first, firstSeparator, second, lastSeparator, last) {
+	let firstValue = $("#" + first).text();
+	let secondValue = $("#" + second).text();
+	let lastValue = $("#" + last).text();
 	if (firstValue !== "" || secondValue !== "" || lastValue !== "") {
-		$("#"+ block).show();
+		$("#" + block).show();
 		if (firstValue !== "" && secondValue !== "" && lastValue !== "") {
 			$("#" + firstSeparator).show();
 			$("#" + lastSeparator).show();
@@ -37,7 +37,7 @@ function separateThreeItems (block, first, firstSeparator, second, lastSeparator
 			$("#" + lastSeparator).hide();
 		}
 	} else {
-		$("#"+ block).hide();
+		$("#" + block).hide();
 	}
 }
 
@@ -47,7 +47,7 @@ function setValue(field, value) {
 		$(divObject).text(value);
 		inputObject = "input[name='" + field + "']";
 		$(inputObject).val(value);
- 		// if (typeof(Storage) !== "undefined") {
+		// if (typeof(Storage) !== "undefined") {
 		// 	localStorage.setItem(field, value);
 		// }
 		if (value !== "") {
@@ -65,8 +65,8 @@ function setValue(field, value) {
 
 function saveImage() {
 	let imageBox = document.querySelector("#imageBox");
-	html2canvas(imageBox).then(canvas => {
-		imageDataURL = canvas.toDataURL("image/png", 1.0);
+	html2canvas(imageBox, { scale: 1.5 }).then(canvas => {
+		imageDataURL = canvas.toDataURL("image/png", 1);
 		let downloadLink = document.createElement('a');
 		downloadLink.download = "assinatura.png";
 		downloadLink.href = imageDataURL;
@@ -85,8 +85,6 @@ function setStyles(originalElem, elem) {
 	elem.style.paddingTop = style.paddingTop;
 	elem.style.paddingBottom = style.paddingBottom;
 	elem.style.display = style.display;
-	elem.style.flexWrap = style.flexWrap;
-	elem.style.flexDirection = style.flexDirection;
 	elem.style.fontWeight = style.fontWeight;
 	elem.style.fontFamily = style.fontFamily;
 	elem.style.fontSize = style.fontSize;
@@ -138,7 +136,7 @@ function resetTooltip() {
 	tooltip.innerHTML = "Clique para copiar!";
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
 	// setValue("fullname", localStorage.getItem("fullname"));
 	// setValue("mail", localStorage.getItem("mail"));
 	// setValue("effecivePosition", localStorage.getItem("effecivePosition"));
